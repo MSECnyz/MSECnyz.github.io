@@ -1,1 +1,1 @@
-[{"title":"First（测试简单Markdown语法）","date":"2017-07-04T11:40:25.000Z","path":"2017/07/04/First/","tags":[]},{"title":"Hello World","date":"2017-07-04T11:22:47.475Z","path":"2017/07/04/hello-world/","tags":[]}]
+[{"title":"First（测试简单Markdown语法）","date":"2017-07-04T11:40:25.000Z","path":"2017/07/04/First/","tags":[{"name":"Anything","slug":"Anything","permalink":"http://yoursite.com/tags/Anything/"},{"name":"学习","slug":"学习","permalink":"http://yoursite.com/tags/学习/"}]},{"title":"Hello World","date":"2017-07-04T11:22:47.475Z","path":"2017/07/04/hello-world/","tags":[]}]
