@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[First（测试简单Markdown语法）]]></title>
+    <url>%2F2017%2F07%2F04%2FFirst%2F</url>
+    <content type="text"><![CDATA[简单的配置好博客后提交了这篇测试空文档迟迟未动，近来算是稳定下来了，那么就随便写点什么吧。 标题与列表等标题 添加标题的话十分简单，只需要加”#”就好啦！加多少”#”就意味着这是几级标题，正如此处。另外在所有的标签后一般都要跟一个空格。 列表 列表的话，加”*“加空格就可以添加无序列表，而直接”1.,2.,3.”加空格就可以添加有序列表了（另，\右划线为转义字符）效果如下 搞事情 搞事情1 搞事情2233333 其他的什么 象DOTA2的命令轮盘，加”&gt;”就可以实现引用效果了(记得前后加入空白行)，如下 相当精彩的比赛! 图片与链接插入图片 插入图片的格式是“![图片关键字](图片链接)”此处图片可以使用图床或相对路径,在source文件夹中新建一个images文件夹，然后把图片放在images文件夹里。，图片放进去后“![图片关键字](/images/X.png)”，如下 插入链接 与插入图片相比，插入链接就简单很多了，去掉感叹号就好，格式如下”[链接名](链接)”这里放一个友情博客链接教大家如何搭建Hexo博客吧~ Vivi的博客 字体、表格、分割线与代码框粗体与斜体 Markdown 的粗体和斜体也非常简单，用两个 包含一段文本就是粗体的语法，用一个 包含一段文本就是斜体的语法。如下： Markdown Markdown 表格 表格感觉像是在画画啊，大概是这样的： 12345| 列1 | 列2 | 列3 || ------------|:-------------:| -----:|| 11 | 12 | 13 || 21 | 22 | 23 || 31 | 32 | 33 | 列1 列2 列3 11 12 13 21 22 23 31 32 33 大概是上面的效果 分割线 分割线的语法只需要另起一行，连续输入三个星号 * 就好了！ 代码框 如果需要在文章里优雅的引用代码框，在 Markdown 下实现也非常简单，只需要用三个 ` 把中间的代码包裹起来,如下面的Java Main方法：直接用”`“包裹的话可以实现这样的单行效果这里是符号内的文字。 12345public class Test&#123; public static void main(String[] args)&#123; &#125;&#125; 还有一点是可以通过加两个全角空格的方式来完成首行缩进。嗯，以上。 大概的常用功能就是这样了~开始愉快的写文章吧！]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2017%2F07%2F04%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+</search>
