@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-28T06:54:43.107Z</updated>
+  <updated>2017-10-19T10:18:51.155Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,73 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>终极狼人开发日志</title>
+    <link href="http://yoursite.com/2017/10/19/%E7%BB%88%E6%9E%81%E7%8B%BC%E4%BA%BA%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/"/>
+    <id>http://yoursite.com/2017/10/19/终极狼人开发日志/</id>
+    <published>2017-10-19T08:07:34.000Z</published>
+    <updated>2017-10-19T10:18:51.155Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;2017.10.18&lt;br&gt;　　准备建立一个serviceTcp长连接&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="CS/EE" scheme="http://yoursite.com/categories/CS-EE/"/>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>回调函数</title>
+    <link href="http://yoursite.com/2017/10/19/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/"/>
+    <id>http://yoursite.com/2017/10/19/回调函数/</id>
+    <published>2017-10-19T08:07:14.000Z</published>
+    <updated>2017-10-19T10:18:56.586Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　虽然平时在很多地方（如各种Listener/监听器模式一类的）都有接触回调函数，但自己始终也没有彻底的搞明白，这两天学习了一下，那么就说一下自己对回调函数的理解好了。&lt;/p&gt;
+&lt;h1 id=&quot;回调函数的大概定义&quot;&gt;&lt;a href=&quot;#回调函数的大概定义&quot; class=&quot;
+    
+    </summary>
+    
+      <category term="CS/EE" scheme="http://yoursite.com/categories/CS-EE/"/>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>心绪紊乱，整理下思路吧。</title>
+    <link href="http://yoursite.com/2017/10/19/%E5%BF%83%E7%BB%AA%E7%B4%8A%E4%B9%B1%EF%BC%8C%E6%95%B4%E7%90%86%E4%B8%8B%E6%80%9D%E8%B7%AF%E5%90%A7%E3%80%82/"/>
+    <id>http://yoursite.com/2017/10/19/心绪紊乱，整理下思路吧。/</id>
+    <published>2017-10-19T07:51:33.000Z</published>
+    <updated>2017-10-19T08:13:51.861Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　又鸽了自己很久了，Markdown语法都有点忘了，这两天有些心烦意乱，写点东西整理下思路吧。&lt;br&gt;　　今晚基本搞明白了回调函数。确实很有用。&lt;br&gt;　　最近心理状态也不是很好，希望明天不要想这么多杂七杂八的事情了。&lt;br&gt;　　有点晚了，明早再补全。希望能在零点前躺倒床
+    
+    </summary>
+    
+      <category term="日常" scheme="http://yoursite.com/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="Anything" scheme="http://yoursite.com/tags/Anything/"/>
+    
+  </entry>
+  
+  <entry>
     <title>First（测试简单Markdown语法）</title>
     <link href="http://yoursite.com/2017/07/04/First/"/>
     <id>http://yoursite.com/2017/07/04/First/</id>
     <published>2017-07-04T11:40:25.000Z</published>
-    <updated>2017-07-28T06:54:43.107Z</updated>
+    <updated>2017-10-19T10:10:25.745Z</updated>
     
     <summary type="html">
     
@@ -32,9 +94,9 @@
       <category term="日常" scheme="http://yoursite.com/categories/%E6%97%A5%E5%B8%B8/"/>
     
     
-      <category term="Anything" scheme="http://yoursite.com/tags/Anything/"/>
-    
       <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Anything" scheme="http://yoursite.com/tags/Anything/"/>
     
   </entry>
   
