@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[终极狼人开发日志]]></title>
     <url>%2F2017%2F10%2F19%2F%E7%BB%88%E6%9E%81%E7%8B%BC%E4%BA%BA%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97%2F</url>
-    <content type="text"><![CDATA[2017.10.18 准备建立一个serviceTcp长连接 2017.10.19 长连接的service转备好了，接下来要处理两个问题 APP对某些手机不兼容，应该是加载图片导致的ANR，需要解决。 服务端莫名卡死。]]></content>
+    <content type="text"><![CDATA[2017.10.18 准备建立一个serviceTcp长连接 2017.10.19 长连接的service转备好了，接下来要处理两个问题 APP对某些手机不兼容，应该是加载图片导致的ANR，需要解决。 服务端莫名卡死。 2017.10.20 准备整合语音功能。兼容性待解决、服务端集合有问题，换框架也许会好。]]></content>
       <categories>
         <category>CS/EE</category>
       </categories>
