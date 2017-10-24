@@ -1,180 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-    
-    <entry>
-      <title><![CDATA[终极狼人开发日志]]></title>
-      <url>/2017/10/19/%E7%BB%88%E6%9E%81%E7%8B%BC%E4%BA%BA%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/</url>
-      <content type="html"><![CDATA[<p>气氛搞起来！<br><a id="more"></a></p>
-<p>2017.10.18<br>　　准备建立一个serviceTcp长连接</p>
-<p>2017.10.19<br>　　长连接的service转备好了，接下来要处理两个问题</p>
-<ol>
-<li>APP对某些手机不兼容，应该是加载图片导致的ANR，需要解决。</li>
-<li>服务端莫名卡死。</li>
-</ol>
-<p>2017.10.20<br>　　准备整合语音功能。兼容性待解决、服务端集合有问题，换框架也许会好。</p>
-]]></content>
-      
-        <categories>
-            
-            <category> CS/EE </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 学习 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[回调函数]]></title>
-      <url>/2017/10/19/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/</url>
-      <content type="html"><![CDATA[<p>　　虽然平时在很多地方（如各种Listener/监听器模式一类的）都有接触回调函数，但自己始终也没有彻底的搞明白，这两天学习了一下，那么就说一下自己对回调函数的理解好了。<br><a id="more"></a></p>
-<h1 id="回调函数的大概定义"><a href="#回调函数的大概定义" class="headerlink" title="回调函数的大概定义"></a>回调函数的大概定义</h1><p>　　<strong>在计算机程序设计中，回调函数，或简称回调，是指通过函数参数传递到其它代码的，某一块可执行代码的引用。这一设计允许了底层代码调用在高层定义的子程序。</strong><br>　　这应该是来自维基百科的定义,那么对于Java，我们会采用接口来实现回调。这里也是接口的一个很完美的应用处我们也可以通过回调的例子来理解一下接口。</p>
-<h1 id="回调到底是做什么的"><a href="#回调到底是做什么的" class="headerlink" title="回调到底是做什么的"></a>回调到底是做什么的</h1><p>　　以我目前的理解来说的话，回调的一大目的就是让A段程序可以调用可能很久以后或是一个毫无关联的B段程序写出来的方法。那么你肯定会有疑问，我写了A段程序的时候，B可能还没被写出来，或者我根本不知道写B程序的那个人会给我什么样的具体方法让我调用，那我怎么办呢？这时候接口 <em>Interface</em> 的作用就体现出来了。A程序可以利用接口来对自己准备调用的来自B的函数做一个规范（例如函数名，暂时叫c好了）。那么A只需要在自己内部调用一个接口对象c的方法，并且给B留一个参数为该接口函数，当B实现对应接口的时候，必然要重写c方法，B此时可以利用A留给自己的函数把自己实现的这个接口传回给A，从而A可以调用来自这个参数的，由B完成的c方法。<br>　　总结起来就是:定接口的负责何时执行与用来干什么，用回调的负责执行的内容。</p>
-<h2 id="废话太多，放代码了"><a href="#废话太多，放代码了" class="headerlink" title="废话太多，放代码了"></a>废话太多，放代码了</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">C</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">c</span><span class="params">(String myC)</span></span>;</div><div class="line">    <span class="comment">//规定C接口的c方法，用来让A调用，让B重写</span></div><div class="line">&#125;</div><div class="line">----------------------------------------------------------------------------</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</div><div class="line">  C myC; <span class="comment">//定义一个C的引用用来接收来自B的参数</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">a</span><span class="params">(String a)</span></span>&#123;</div><div class="line">    myC.c(a); <span class="comment">//在某个需要的时候，即可调用c();方法，此方法会被B类重写</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setC</span><span class="params">(C myC)</span></span>&#123;</div><div class="line">    <span class="keyword">this</span>.myC = myC;</div><div class="line">    <span class="comment">//此函数用来让B传递自己实现的C接口（包含了自己重写的方法）</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">----------------------------------------------------------------------------</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">implements</span> <span class="title">C</span></span>&#123;</div><div class="line">  <span class="comment">//当然会让B实现C接口重写c方法，这样当B被传入A的setC()方法的时候，A就能调用B写出来的函数了</span></div><div class="line">  <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">c</span><span class="params">(String myC)</span> </span>&#123;  </div><div class="line">        System.out.println(<span class="string">"可以随便完成些什么"</span>+myC);  </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">----------------------------------------------------------------------------</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;  </div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">      A a = <span class="keyword">new</span> A();  </div><div class="line">      a.setC(<span class="keyword">new</span> B());  </div><div class="line">      a.a();</div><div class="line">      <span class="comment">//传入后，A中实现的c方法就是被B重写的了！</span></div><div class="line">  &#125;  </div><div class="line">&#125;  </div><div class="line">----------------------------------------------------------------------------</div><div class="line"><span class="comment">//当然了，很多时候也可以通过匿名内部类来调用回调如经典的监听器</span></div><div class="line">button.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>　　回调的技巧还用于Android开发的 Service与Activity通信的时候，利用回调的原理，在Service需要的时候，在其内部调用Activity重写的方法（如更新UI等），即可完成向Activity通信了。</p>
-<p>另附一篇在我学习这部分的过程中让我受益匪浅的博客:</p>
-<p><a href="http://www.cnblogs.com/snowbook/p/5802804.html" target="_blank" rel="external">回调函数透彻理解Java</a></p>
-]]></content>
-      
-        <categories>
-            
-            <category> CS/EE </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 学习 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[心绪紊乱，整理下思路吧。]]></title>
-      <url>/2017/10/19/%E5%BF%83%E7%BB%AA%E7%B4%8A%E4%B9%B1%EF%BC%8C%E6%95%B4%E7%90%86%E4%B8%8B%E6%80%9D%E8%B7%AF%E5%90%A7%E3%80%82/</url>
-      <content type="html"><![CDATA[<p>　　又鸽了自己很久了，这两天有些心烦意乱，莫名想依靠文字来整理下思路。<br><a id="more"></a></p>
-<p>　　今晚基本搞明白了回调函数。确实很有用。<br>　　最近心理状态也不是很好，希望明天不要想这么多杂七杂八的事情了。<br>　　有点晚了，明早再补全。希望能在零点前躺倒床上。<br>　　10-18 23:40</p>
-<hr>
-<p>　　这里是第二天十月十九日的下午三点五十七分。本来想着不太忙的话写一下狼人杀，可惜偏偏今天突然多了很多事情，在公司采集数据到刚才，大哥又给我打电话说产品下周就要用，要赶快。。看来有的忙了，但毕竟决定了每天都要写的，所以昨晚拖到现在的这篇文章不能拖到今晚了。。<br>　　那么接下来准备在这里做两件事，一个是总结一下刚学到的回调函数。二是开一个狼人杀开发日志的坑。好了，今天心理状态还不错，就不废话了。开两篇新文章去。</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 日常 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Anything </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[First（测试简单Markdown语法）]]></title>
-      <url>/2017/07/04/First/</url>
-      <content type="html"><![CDATA[<p>　　简单的配置好博客后提交了这篇测试空文档迟迟未动，近来算是稳定下来了，那么就随便写点什么吧简单说一说Markdown语法好了~<br><a id="more"></a></p>
-<h1 id="标题与列表等"><a href="#标题与列表等" class="headerlink" title="标题与列表等"></a>标题与列表等</h1><h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>　　添加标题的话十分简单，只需要加”#”就好啦！加多少”#”就意味着这是几级标题，正如此处。另外在所有的标签后一般都要跟一个空格。</p>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>　　列表的话，加”*“加空格就可以添加无序列表，而直接”1.,2.,3.”加空格就可以添加有序列表了（另，\右划线为转义字符）效果如下</p>
-<ul>
-<li>搞事情</li>
-</ul>
-<ol>
-<li>搞事情1</li>
-<li><p>搞事情2233333</p>
-<h2 id="其他的什么"><a href="#其他的什么" class="headerlink" title="其他的什么"></a>其他的什么</h2><p>　　象DOTA2的命令轮盘，加”&gt;”就可以实现引用效果了(记得前后加入空白行)，如下</p>
-<blockquote>
-<p>相当精彩的比赛!</p>
-</blockquote>
-</li>
-</ol>
-<h1 id="图片与链接"><a href="#图片与链接" class="headerlink" title="图片与链接"></a>图片与链接</h1><h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p>  　　插入图片的格式是“![图片关键字](图片链接)”此处图片可以使用图床或相对路径,在source文件夹中新建一个images文件夹，然后把图片放在images文件夹里。，图片放进去后“![图片关键字](/images/X.png)”，如下</p>
-<p>  <img src="/images/阿福试麦.png" alt="阿福试麦"></p>
-<h2 id="插入链接"><a href="#插入链接" class="headerlink" title="插入链接"></a>插入链接</h2><p>  　　与插入图片很像，要插入链接只需要去掉感叹号就好，格式如下”[链接名](链接)”这里放一个友情博客链接教大家如何搭建Hexo博客吧~</p>
-<p> <a href="https://chenvivi.github.io/2017/03/02/Hexo%E5%8D%9A%E5%AE%A2%EF%BC%8C%E6%88%91%E6%96%B0%E7%9A%84%E7%BA%AA%E5%BD%95%E6%96%B9%E5%BC%8F/" target="_blank" rel="external">Vivi的博客</a></p>
-<h1 id="字体、表格、分割线与代码框"><a href="#字体、表格、分割线与代码框" class="headerlink" title="字体、表格、分割线与代码框"></a>字体、表格、分割线与代码框</h1><h2 id="粗体与斜体"><a href="#粗体与斜体" class="headerlink" title="粗体与斜体"></a>粗体与斜体</h2><p>  Markdown 的粗体和斜体也非常简单，用两个 “*“ 包含一段文本就是粗体的语法，用一个 “*“ 包含一段文本就是斜体的语法。如下：<br>  <strong>Markdown</strong>  <em>Markdown</em></p>
-<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>  表格感觉像是在画画啊，大概是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">| 列1         | 列2           | 列3    |</div><div class="line">| ------------|:-------------:| -----:|</div><div class="line">| 11          | 12            |   13  |</div><div class="line">| 21          | 22            |   23  |</div><div class="line">| 31          | 32            |  33   |</div></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>列1</th>
-<th style="text-align:center">列2</th>
-<th style="text-align:right">列3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>11</td>
-<td style="text-align:center">12</td>
-<td style="text-align:right">13</td>
-</tr>
-<tr>
-<td>21</td>
-<td style="text-align:center">22</td>
-<td style="text-align:right">23</td>
-</tr>
-<tr>
-<td>31</td>
-<td style="text-align:center">32</td>
-<td style="text-align:right">33</td>
-</tr>
-</tbody>
-</table>
-<p>大概是上面的效果</p>
-<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><p>　　分割线的语法只需要另起一行，连续输入三个星号 “***“ 就好了！</p>
-<hr>
-<h2 id="代码框"><a href="#代码框" class="headerlink" title="代码框"></a>代码框</h2><p>　　如果需要在文章里优雅的引用代码框，在 Markdown 下实现也非常简单，只需要用三个 `(波浪键) 把中间的代码包裹起来,如下面的Java Main方法：<br>直接用”`“包裹的话可以实现这样的单行效果<code>这里是符号内的文字</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public class Test&#123;</div><div class="line">  public static void main(String[] args)&#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>　　还有一点是可以通过加两个全角空格的方式来完成首行缩进。嗯，以上。<br>　　大概的常用功能就是这样了~开始愉快的写文章吧！</p>
-<hr>
-]]></content>
-      
-        <categories>
-            
-            <category> 日常 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Anything </tag>
-            
-            <tag> 学习 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Hello World]]></title>
-      <url>/2017/07/04/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-      
-        
-    </entry>
-    
-  
-  
+<search>
+  <entry>
+    <title><![CDATA[终极狼人开发日志]]></title>
+    <url>%2F2017%2F10%2F19%2F%E7%BB%88%E6%9E%81%E7%8B%BC%E4%BA%BA%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97%2F</url>
+    <content type="text"><![CDATA[2017.10.20 又鸽了两天。。接下来首要是完成单机逻辑 次要是服务器方面良好的话更换一下连接方式。 语音功能可用，待加入。 2017.10.20 准备整合语音功能。兼容性待解决、服务端集合有问题，换框架也许会好。 2017.10.19 长连接的service转备好了，接下来要处理两个问题 APP对某些手机不兼容，应该是加载图片导致的ANR，需要解决。 服务端莫名卡死。 2017.10.18 准备建立一个serviceTcp长连接]]></content>
+      <categories>
+        <category>CS/EE</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[回调函数]]></title>
+    <url>%2F2017%2F10%2F19%2F%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[虽然平时在很多地方（如各种Listener/监听器模式一类的）都有接触回调函数，但自己始终也没有彻底的搞明白，这两天学习了一下，那么就说一下自己对回调函数的理解好了。 回调函数的大概定义 在计算机程序设计中，回调函数，或简称回调，是指通过函数参数传递到其它代码的，某一块可执行代码的引用。这一设计允许了底层代码调用在高层定义的子程序。 这应该是来自维基百科的定义,那么对于Java，我们会采用接口来实现回调。这里也是接口的一个很完美的应用处我们也可以通过回调的例子来理解一下接口。 回调到底是做什么的 以我目前的理解来说的话，回调的一大目的就是让A段程序可以调用可能很久以后或是一个毫无关联的B段程序写出来的方法。那么你肯定会有疑问，我写了A段程序的时候，B可能还没被写出来，或者我根本不知道写B程序的那个人会给我什么样的具体方法让我调用，那我怎么办呢？这时候接口 Interface 的作用就体现出来了。A程序可以利用接口来对自己准备调用的来自B的函数做一个规范（例如函数名，暂时叫c好了）。那么A只需要在自己内部调用一个接口对象c的方法，并且给B留一个参数为该接口函数，当B实现对应接口的时候，必然要重写c方法，B此时可以利用A留给自己的函数把自己实现的这个接口传回给A，从而A可以调用来自这个参数的，由B完成的c方法。 总结起来就是:定接口的负责何时执行与用来干什么，用回调的负责执行的内容。 废话太多，放代码了12345678910111213141516171819202122232425262728293031323334353637383940414243public interface C &#123; void c(String myC); //规定C接口的c方法，用来让A调用，让B重写&#125;----------------------------------------------------------------------------public class A &#123; C myC; //定义一个C的引用用来接收来自B的参数 public void a(String a)&#123; myC.c(a); //在某个需要的时候，即可调用c();方法，此方法会被B类重写 &#125; public void setC(C myC)&#123; this.myC = myC; //此函数用来让B传递自己实现的C接口（包含了自己重写的方法） &#125;&#125;----------------------------------------------------------------------------public class B implements C&#123; //当然会让B实现C接口重写c方法，这样当B被传入A的setC()方法的时候，A就能调用B写出来的函数了 @Override public void c(String myC) &#123; System.out.println("可以随便完成些什么"+myC); &#125;&#125;----------------------------------------------------------------------------public class Test &#123; public static void main(String[] args) &#123; A a = new A(); a.setC(new B()); a.a(); //传入后，A中实现的c方法就是被B重写的了！ &#125; &#125; ----------------------------------------------------------------------------//当然了，很多时候也可以通过匿名内部类来调用回调如经典的监听器button.setOnClickListener(new View.OnClickListener() &#123; @Override public void onClick(View v) &#123; &#125;&#125;); 最后 回调的技巧还用于Android开发的 Service与Activity通信的时候，利用回调的原理，在Service需要的时候，在其内部调用Activity重写的方法（如更新UI等），即可完成向Activity通信了。 另附一篇在我学习这部分的过程中让我受益匪浅的博客: 回调函数透彻理解Java]]></content>
+      <categories>
+        <category>CS/EE</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[心绪紊乱，整理下思路吧。]]></title>
+    <url>%2F2017%2F10%2F19%2F%E5%BF%83%E7%BB%AA%E7%B4%8A%E4%B9%B1%EF%BC%8C%E6%95%B4%E7%90%86%E4%B8%8B%E6%80%9D%E8%B7%AF%E5%90%A7%E3%80%82%2F</url>
+    <content type="text"><![CDATA[又鸽了自己很久了，这两天有些心烦意乱，莫名想依靠文字来整理下思路。 今晚基本搞明白了回调函数。确实很有用。 最近心理状态也不是很好，希望明天不要想这么多杂七杂八的事情了。 有点晚了，明早再补全。希望能在零点前躺倒床上。 10-18 23:40 这里是第二天十月十九日的下午三点五十七分。本来想着不太忙的话写一下狼人杀，可惜偏偏今天突然多了很多事情，在公司采集数据到刚才，大哥又给我打电话说产品下周就要用，要赶快。。看来有的忙了，但毕竟决定了每天都要写的，所以昨晚拖到现在的这篇文章不能拖到今晚了。。 那么接下来准备在这里做两件事，一个是总结一下刚学到的回调函数。二是开一个狼人杀开发日志的坑。好了，今天心理状态还不错，就不废话了。开两篇新文章去。]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+      <tags>
+        <tag>Anything</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[First（测试简单Markdown语法）]]></title>
+    <url>%2F2017%2F07%2F04%2FFirst%2F</url>
+    <content type="text"><![CDATA[简单的配置好博客后提交了这篇测试空文档迟迟未动，近来算是稳定下来了，那么就随便写点什么吧简单说一说Markdown语法好了~ 标题与列表等标题 添加标题的话十分简单，只需要加”#”就好啦！加多少”#”就意味着这是几级标题，正如此处。另外在所有的标签后一般都要跟一个空格。 列表 列表的话，加”*“加空格就可以添加无序列表，而直接”1.,2.,3.”加空格就可以添加有序列表了（另，\右划线为转义字符）效果如下 搞事情 搞事情1 搞事情2233333 其他的什么 象DOTA2的命令轮盘，加”&gt;”就可以实现引用效果了(记得前后加入空白行)，如下 相当精彩的比赛! 图片与链接插入图片 插入图片的格式是“![图片关键字](图片链接)”此处图片可以使用图床或相对路径,在source文件夹中新建一个images文件夹，然后把图片放在images文件夹里。，图片放进去后“![图片关键字](/images/X.png)”，如下 插入链接 与插入图片很像，要插入链接只需要去掉感叹号就好，格式如下”[链接名](链接)”这里放一个友情博客链接教大家如何搭建Hexo博客吧~ Vivi的博客 字体、表格、分割线与代码框粗体与斜体 Markdown 的粗体和斜体也非常简单，用两个 “*“ 包含一段文本就是粗体的语法，用一个 “*“ 包含一段文本就是斜体的语法。如下： Markdown Markdown 表格 表格感觉像是在画画啊，大概是这样的： 12345| 列1 | 列2 | 列3 || ------------|:-------------:| -----:|| 11 | 12 | 13 || 21 | 22 | 23 || 31 | 32 | 33 | 列1 列2 列3 11 12 13 21 22 23 31 32 33 大概是上面的效果 分割线 分割线的语法只需要另起一行，连续输入三个星号 “***“ 就好了！ 代码框 如果需要在文章里优雅的引用代码框，在 Markdown 下实现也非常简单，只需要用三个 `(波浪键) 把中间的代码包裹起来,如下面的Java Main方法：直接用”`“包裹的话可以实现这样的单行效果这里是符号内的文字。 12345public class Test&#123; public static void main(String[] args)&#123; &#125;&#125; 还有一点是可以通过加两个全角空格的方式来完成首行缩进。嗯，以上。 大概的常用功能就是这样了~开始愉快的写文章吧！]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+      <tags>
+        <tag>Anything</tag>
+        <tag>学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2017%2F07%2F04%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
 </search>
