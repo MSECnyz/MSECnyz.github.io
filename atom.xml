@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-10-24T07:50:26.639Z</updated>
+  <updated>2017-11-28T08:45:01.630Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,15 +17,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>一夜终极狼人说明</title>
+    <link href="http://yoursite.com/2017/11/28/%E4%B8%80%E5%A4%9C%E7%BB%88%E6%9E%81%E7%8B%BC%E4%BA%BA%E8%AF%B4%E6%98%8E/"/>
+    <id>http://yoursite.com/2017/11/28/一夜终极狼人说明/</id>
+    <published>2017-11-28T08:13:45.000Z</published>
+    <updated>2017-11-28T08:45:01.630Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　在此介绍一下准备完成的一夜终极狼人桌游的流程，由于要放在手机上、涉及到网络与玩家的具体操作，还要考虑玩家是不是新手，所以以下的规则流程描述与游戏官方的正常流程可能会有一些微小的差异。但总的游戏玩法是没有区别的。说明如下:&lt;br&gt;
+    
+    </summary>
+    
+      <category term="日常" scheme="http://yoursite.com/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="游戏" scheme="http://yoursite.com/tags/%E6%B8%B8%E6%88%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>终极狼人开发日志</title>
     <link href="http://yoursite.com/2017/10/19/%E7%BB%88%E6%9E%81%E7%8B%BC%E4%BA%BA%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/"/>
     <id>http://yoursite.com/2017/10/19/终极狼人开发日志/</id>
     <published>2017-10-19T08:07:34.000Z</published>
-    <updated>2017-10-24T07:50:26.639Z</updated>
+    <updated>2017-11-28T08:16:43.934Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;2017.10.20&lt;br&gt;　　又鸽了两天。。接下来首要是完成单机逻辑&lt;br&gt;　　次要是服务器方面良好的话更换一下连接方式。&lt;br&gt;　　语音功能可用，待加入。&lt;br&gt;
+      &lt;p&gt;2017.11.28&lt;/p&gt;
+&lt;p&gt;　　完成了新服务器的适配，正在修改回合逻辑。&lt;br&gt;　　咕咕咕咕咕&lt;br&gt;
     
     </summary>
     
@@ -61,7 +82,7 @@
     <link href="http://yoursite.com/2017/10/19/%E5%BF%83%E7%BB%AA%E7%B4%8A%E4%B9%B1%EF%BC%8C%E6%95%B4%E7%90%86%E4%B8%8B%E6%80%9D%E8%B7%AF%E5%90%A7%E3%80%82/"/>
     <id>http://yoursite.com/2017/10/19/心绪紊乱，整理下思路吧。/</id>
     <published>2017-10-19T07:51:33.000Z</published>
-    <updated>2017-10-24T06:17:05.372Z</updated>
+    <updated>2017-11-28T08:17:11.230Z</updated>
     
     <summary type="html">
     
